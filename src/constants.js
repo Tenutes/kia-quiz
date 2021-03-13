@@ -1,0 +1,285 @@
+export const BRAND = 'KIA';
+
+export const STEPS = [
+  {
+    id: 1,
+    component: 'List',
+    countable: true,
+    title: 'Выберите интересующую вас модель',
+  },
+  {
+    id: 2,
+    component: 'Colors',
+    countable: true,
+    title: 'Выберите цвет Вашего автомобиля',
+  },
+  {
+    id: 3,
+    component: 'Feedback',
+    countable: true,
+    title: 'Укажите контактный номер телефона',
+  },
+  {
+    id: 4,
+    countable: false,
+    component: 'Success',
+    title: '',
+  },
+  {
+    id: 5,
+    countable: false,
+    component: 'Developer',
+    title: '',
+  },
+];
+
+export const MODELS = [
+  {
+    id: 1,
+    name: 'Rio',
+    price: '859 900',
+    image: 'rio.png',
+    colors: [
+      {
+        id: 1,
+        name: 'Crystal White (PGU)',
+        images: [],
+        hex: '#ebe8e8',
+      },
+      {
+        id: 2,
+        name: 'Sleek Silver (RHM)',
+        images: [],
+        hex: '#d4ceca',
+      },
+      {
+        id: 3,
+        name: 'Ice Wine (W4Y)',
+        images: [],
+        hex: '#cbc2b3',
+      },
+      {
+        id: 4,
+        name: 'Marina Blue (N4U)',
+        images: [],
+        hex: '#4970d2',
+      },
+      {
+        id: 5,
+        name: 'Fiery Red (R4R)',
+        images: [],
+        hex: '#a93625',
+      },
+      {
+        id: 6,
+        name: 'Urban Gray (U4G)',
+        images: [],
+        hex: '#a49c9a',
+      },
+      {
+        id: 7,
+        name: 'Siena Brown (S4N)',
+        images: [],
+        hex: '#4d382e',
+      },
+      {
+        id: 8,
+        name: 'Phantom Black (MZH)',
+        images: [],
+        hex: '#101010',
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: 'CEED',
+    price: '1 304 900',
+    image: 'ceed.png',
+    colors: [
+      {
+        id: 1,
+        name: 'Cassa White',
+        images: [],
+        hex: '#bdc1c3',
+      },
+      {
+        id: 2,
+        name: 'Track Red',
+        images: [],
+        hex: '#9a2826',
+      },
+      {
+        id: 3,
+        name: 'Deluxe White (HW2)',
+        images: [],
+        hex: '#cbcdcd',
+      },
+      {
+        id: 4,
+        name: 'Sparkling Silver (KCS)',
+        images: [],
+        hex: '#b3b3b3',
+      },
+      {
+        id: 5,
+        name: 'Blue Frame (B3L)',
+        images: [],
+        hex: '#407bae',
+      },
+      {
+        id: 6,
+        name: 'Infra Red (AA9)',
+        images: [],
+        hex: '#8d312f',
+      },
+      {
+        id: 7,
+        name: 'Cosmo Blue (CB7)',
+        images: [],
+        hex: '#184063',
+      },
+      {
+        id: 8,
+        name: 'Lunar Silver (CSS)',
+        images: [],
+        hex: '#6c7178',
+      },
+      {
+        id: 9,
+        name: 'Cooper Stone (L2B),',
+        images: [],
+        hex: '#61514a',
+      },
+      {
+        id: 10,
+        name: 'Penta Metal (H8G)',
+        images: [],
+        hex: '#2e3237',
+      },
+      {
+        id: 11,
+        name: 'Black Pearl (1K)',
+        images: [],
+        hex: '#2e3235',
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: 'Stinger',
+    price: '2 314 900',
+    image: 'stinger.png',
+    colors: [
+      {
+        id: 1,
+        name: 'Neon Orange (N2O)',
+        images: [],
+        hex: '#dd7744',
+      },
+      {
+        id: 2,
+        name: 'Snow White Pearl (SWP)',
+        images: [],
+        hex: '#e5e4e6',
+      },
+      {
+        id: 3,
+        name: 'Micro Blue (M6B)',
+        images: [],
+        hex: '#407bae',
+      },
+      {
+        id: 4,
+        name: 'Hi Chroma Red (H4R)',
+        images: [],
+        hex: '#862528',
+      },
+      {
+        id: 5,
+        name: 'Deep Chroma Blue (D9B)',
+        images: [],
+        hex: '#0e398b',
+      },
+      {
+        id: 6,
+        name: 'Pantera Metal (P2M)',
+        images: [],
+        hex: '#51566b',
+      },
+      {
+        id: 7,
+        name: 'Aurora Black Pearl (ABP)',
+        images: [],
+        hex: '#262829',
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: 'Sorento',
+    price: '2 214 900',
+    image: 'sorento.png',
+    colors: [
+      {
+        id: 1,
+        name: 'Clear White (UD)',
+        images: [],
+        hex: '#e8e9e7',
+      },
+      {
+        id: 2,
+        name: 'Snow White Pearl (SWP)',
+        images: [],
+        hex: '#e5e4e6',
+      },
+      {
+        id: 3,
+        name: 'Silky Silver (4SS)',
+        images: [],
+        hex: '#a7a9b1',
+      },
+      {
+        id: 4,
+        name: 'Essence Brown (BE2)',
+        images: [],
+        hex: '#443830',
+      },
+      {
+        id: 5,
+        name: 'Mineral Blue (M4B)',
+        images: [],
+        hex: '#234967',
+      },
+      {
+        id: 6,
+        name: 'Steel Gray (KLG)',
+        images: [],
+        hex: '#737f92',
+      },
+      {
+        id: 7,
+        name: 'Runway Red (CR5)',
+        images: [],
+        hex: '#b12424',
+      },
+      {
+        id: 8,
+        name: 'Gravity Blue (B4U)',
+        images: [],
+        hex: '#082c73',
+      },
+      {
+        id: 9,
+        name: 'Platinum Graphite (ABT)',
+        images: [],
+        hex: '#4e5056',
+      },
+      {
+        id: 10,
+        name: 'Aurora Black Pearl (ABP)',
+        images: [],
+        hex: '#262829',
+      },
+    ],
+  },
+];

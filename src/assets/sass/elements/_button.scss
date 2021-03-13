@@ -1,0 +1,73 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  transition: .25s;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    color: #bb162b;
+  }
+
+  &.disabled {
+    color: #848282;
+    cursor: not-allowed;
+
+    &:hover,
+    &:focus {
+      color: #848282;
+    }
+  }
+
+  &__arrow {
+    position: relative;
+    width: 30px;
+    height: 15px;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      top: 5px;
+      width: 60%;
+      height: 3px;
+      background: currentColor;
+    }
+
+    &::before {
+      left: -1px;
+      transform: rotate(-30deg);
+    }
+
+    &::after {
+      right: -1px;
+      transform: rotate(30deg);
+    }
+
+    &--right {
+      transform: rotate(90deg);
+    }
+
+    &--left {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &--submit {
+    height: 50px;
+    padding: 0 20px;
+    font-size: 17px;
+    line-height: 50px;
+    color: white;
+    background: $c-red;
+    margin: 0 auto;
+
+    &:hover,
+    &:focus {
+      color: white;
+      background: darken($c-red, 10%);
+    }
+  }
+}

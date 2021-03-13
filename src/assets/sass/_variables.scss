@@ -1,0 +1,17 @@
+// colors
+$c-txt: #2d2d2d;
+$c-base: #fff;
+$c-red: #c31224;
+
+$transition-base: .25s linear;
+
+// fonts
+
+$font: 'KIA', Arial, sans-serif;
+
+// Breakpoints
+$mobile-only: "(max-width: 767px)";
+$tablet: "(min-width: 768px)";
+$desktop: "(min-width: 1170px)";
+$desktop-wide: "(min-width: 1600px)";
+$retina: "(min-resolution: 144dpi), (min-resolution: 1.5dppx)";
