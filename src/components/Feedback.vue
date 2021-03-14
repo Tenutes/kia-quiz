@@ -85,6 +85,7 @@ export default {
             required
             type="tel"
             @input="error.phone = null"
+            @focus="phone = phone || '+7'"
           >
           <div class="quiz-feedback__form-agreement">
             <div class="checkmark">
