@@ -30,6 +30,9 @@
     cursor: pointer;
     font-size: 10px;
     line-height: 22px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-family: Arial, sans-serif;
 
     &.checkmark__text {
       font-size: 1rem;

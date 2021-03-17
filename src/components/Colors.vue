@@ -20,6 +20,14 @@ export default {
       default: () => ({}),
     },
   },
+  mounted() {
+    this.model.colors.forEach(color => {
+      for (let i = 1; i < 24; i++) {
+        const image = new Image();
+        image.src = `img/colors/${this.model.name.toLowerCase()}/${color.hex.slice(1, 7)}/${i}.png`;
+      }
+    });
+  },
   computed: {
     brand() {
       return BRAND;
@@ -33,8 +41,6 @@ export default {
       return getPath(path);
     },
   },
-  destroyed() {
-  }
 };
 </script>
 
@@ -70,6 +76,7 @@ export default {
         :key="modelColor.id"
         class="quiz-colors__list-item"
         @click="$emit('choose-color', modelColor)"
+        @mouseover="$emit('set-color', modelColor)"
       >
         <div
           :class="{
@@ -107,27 +114,26 @@ export default {
     flex-grow: 1;
     width: 100%;
     margin-bottom: 15px;
-    max-width: 550px;
+    max-width: 420px;
   }
 
   &__stage-image {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 25px auto 0;
+    margin: 0 auto;
   }
 
   &__stage-sixty {
     max-width: 100%;
-    width: 900px;
-    margin: 25px auto 0;
+    width: 600px;
+    margin: 0 auto;
   }
 
   &__list {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
-    max-width: calc(100% - 260px); // -135px button x2; +10px from margin
     margin: -5px;
   }
 
@@ -150,7 +156,8 @@ export default {
   background: none;
 }
 
-#v360-menu-btns {
+#v360-menu-btns,
+.v360-percentage-text {
   display: none;
 }
 </style>

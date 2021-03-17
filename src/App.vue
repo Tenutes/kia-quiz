@@ -150,8 +150,8 @@ svg {
   &__content {
     width: 100%;
     height: 100%;
-    max-width: 1280px;
-    max-height: 700px;
+    max-width: 920px;
+    max-height: 565px;
     display: flex;
     flex-direction: column;
     justify-content: center;

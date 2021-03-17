@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      phone: null,
+      phone: '',
       agreement: true,
       error: {},
       showPopup: false,
@@ -35,12 +35,8 @@ export default {
   methods: {
     submit() {
       this.error = {};
-      if (!isPhoneValid(this.phone)) {
-        this.error.phone = 'Введите верный телефон';
-      }
-
-      if (!this.phone) {
-        this.error.phone = 'Введите телефон';
+      if (!this.phone || !isPhoneValid(this.phone)) {
+        this.error.phone = 'Введите корректный номер телефона';
       }
 
       if (!this.agreement) {
@@ -74,19 +70,33 @@ export default {
         @submit.prevent="submit"
       >
         <div class="quiz-feedback__form-field">
-          <input
-            v-model="phone"
-            v-mask="mask"
-            :class="{
+          <div class="quiz-feedback__form-field-input">
+            <label
+              v-if="error.phone"
+              for="phone"
+              class="error"
+            >
+              {{ error.phone }}
+            </label>
+            <input
+              v-model="phone"
+              v-mask="mask"
+              :class="{
               error: error.phone,
             }"
-            name="phone"
-            placeholder="+7 (Ваш телефон)"
-            required
-            type="tel"
-            @input="error.phone = null"
-            @focus="phone = phone || '+7'"
-          >
+              name="phone"
+              placeholder="+7 (Ваш телефон)"
+              required
+              type="tel"
+              @input="error.phone = null"
+              @focus="phone = phone || '+7'"
+              autocapitalize="off"
+              autocorrect="off"
+              tabindex="0"
+              id="phone"
+              value
+            >
+          </div>
           <div class="quiz-feedback__form-agreement">
             <div class="checkmark">
               <input
@@ -138,7 +148,7 @@ export default {
 
     &--image {
       flex-shrink: 0;
-      width: 70%;
+      width: 60%;
     }
 
     &:last-child {
@@ -147,7 +157,7 @@ export default {
   }
 
   &__form {
-    padding: 18px;
+    padding: 18px 10px;
     border-radius: 6px;
     background-color: rgba(#363636, .8);
   }
@@ -163,18 +173,27 @@ export default {
   }
 
   &__form-field {
-    margin-bottom: 25px;
+    position: relative;
+    margin-bottom: 20px;
 
     &:last-child {
       margin-bottom: 0;
     }
 
+    label.error {
+      position: absolute;
+      top: 100%;
+      font-size: 12px;
+      left: 0;
+      color: $c-red;
+      font-family: Arial, sans-serif;
+    }
+
     input {
       display: block;
-      width: calc(100% - 60px);
-      margin-bottom: 10px;
+      width: calc(100% - 40px);
       padding: 5px 0;
-      font-size: 25px;
+      font-size: 22px;
       color: white;
       border-bottom: 1px solid white;
 
@@ -193,6 +212,11 @@ export default {
     }
   }
 
+  &__form-field-input {
+    position: relative;
+    margin-bottom: 15px;
+  }
+
   &__list {
     margin-bottom: 8px;
     list-style: none;
@@ -200,7 +224,7 @@ export default {
     li {
       position: relative;
       padding-left: 15px;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
       color: white;
 
@@ -230,7 +254,7 @@ export default {
 
   &__list-head {
     margin-bottom: 10px;
-    font-size: 22px;
+    font-size: 20px;
     color: white;
 
     span {
@@ -242,6 +266,9 @@ export default {
     font-size: 10px;
     font-weight: 100;
     color: white;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-family: Arial, sans-serif;
   }
 }
 

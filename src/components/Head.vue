@@ -80,7 +80,7 @@ export default {
   h1 {
     position: relative;
     z-index: 3;
-    font-size: 60px;
+    font-size: 45px;
     font-weight: 800;
     line-height: 1.22;
   }
@@ -88,7 +88,7 @@ export default {
   h2 {
     position: relative;
     z-index: 3;
-    font-size: 35px;
+    font-size: 28px;
     font-weight: 400;
     line-height: 1.22;
     color: #6a6a6a;
@@ -102,8 +102,8 @@ export default {
 
   &__counter {
     position: relative;
-    margin-bottom: 40px;
-    font-size: 24px;
+    margin-bottom: 20px;
+    font-size: 22px;
     font-weight: 100;
     color: #848282;
     z-index: 3;
@@ -111,14 +111,14 @@ export default {
 
   &__action {
     position: absolute;
-    top: -35px;
+    top: -25px;
     right: -50px;
     display: flex;
 
     &--finished {
       z-index: 10;
       top: 0;
-      right: 5px;
+      right: 0;
     }
   }
 
@@ -126,7 +126,6 @@ export default {
     position: relative;
     width: 30px;
     height: 30px;
-    margin-top: 5px;
     border-radius: 50%;
     outline: none;
     transition: .25s;
@@ -166,9 +165,9 @@ export default {
   &__logo {
     display: flex;
     align-items: center;
-    width: 135px;
-    height: 120px;
-    margin-right: 25px;
+    width: 110px;
+    height: 95px;
+    margin-right: 20px;
     background: #c31123;
 
     img {

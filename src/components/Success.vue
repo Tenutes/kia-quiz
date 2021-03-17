@@ -15,7 +15,7 @@ export default {
 
 <style lang="scss" scoped>
 .quiz-success {
-  padding: 75px 0;
+  padding: 55px 0 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@ export default {
   flex-grow: 1;
 
   &__wrapper {
-    padding: 75px 35px;
+    padding: 55px 35px;
     background-color: rgba(#363636, .8);
     border-radius: 6px;
     display: flex;
@@ -36,7 +36,7 @@ export default {
     p {
       color: white;
       margin-bottom: 25px;
-      font-size: 35px;
+      font-size: 25px;
       text-align: center;
 
       &:last-child {

@@ -3,7 +3,6 @@ import ParallaxBackground from 'vue-parallax-background';
 
 import { STEPS } from '@/constants';
 import HeadVue from '@/components/Head';
-import FooterVue from '@/components/Footer';
 import List from '@/components/List';
 import Colors from '@/components/Colors';
 import Feedback from '@/components/Feedback';
@@ -17,7 +16,6 @@ export default {
     Firework,
     Developer,
     Success,
-    FooterVue,
     HeadVue,
     List,
     Colors,
@@ -58,50 +56,6 @@ export default {
     stepCount() {
       return `${this.activeStep.id}/${STEPS.filter(({ countable }) => countable).length}`;
     },
-    /**
-     * Логика кнопок для футера
-     */
-    footerButtons() {
-      const buttons = {
-        back: {
-          show: false,
-        },
-        next: {
-          show: false,
-          class: 'disabled',
-        },
-      };
-
-      switch (this.activeStep.id) {
-        case 1: {
-          buttons.back.show = false;
-          buttons.next.show = true;
-
-          buttons.next.class = this.model ? '' : 'disabled';
-          break;
-        }
-
-        case 2: {
-          buttons.back.show = true;
-          buttons.next.show = true;
-          buttons.next.class = this.color ? '' : 'disabled';
-          break;
-        }
-
-        case 3: {
-          buttons.back.show = true;
-          buttons.next.show = false;
-          break;
-        }
-
-        default:
-          buttons.back.show = false;
-          buttons.next.show = false;
-          break;
-      }
-
-      return buttons;
-    }
   },
   methods: {
     /**
@@ -113,16 +67,14 @@ export default {
     },
     chooseModel(model) {
       this.model = model;
+      this.loadNextStep();
     },
-    chooseColor(color) {
+    setColor(color) {
       this.color = color;
     },
-    loadPreviousStep() {
-      this.transitionName = 'slide-right';
-      if (this.step_id === 2) {
-        this.color = null;
-      }
-      this.step_id--;
+    chooseColor(color) {
+      this.setColor(color);
+      this.loadNextStep();
     },
     loadNextStep() {
       this.transitionName = 'slide-left';
@@ -179,14 +131,9 @@ export default {
         @submit="submit"
         @choose-model="chooseModel"
         @choose-color="chooseColor"
+        @set-color="setColor"
       />
     </transition>
-    <footer-vue
-      v-if="!formSent"
-      :buttons="footerButtons"
-      @prev-click="loadPreviousStep"
-      @next-click="loadNextStep"
-    />
   </div>
 </template>
 
@@ -195,7 +142,7 @@ export default {
 .quiz {
   user-select: none;
 
-  * {
+  *:not(input) {
     user-select: none;
   }
 }
@@ -230,7 +177,7 @@ export default {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 35px 55px 75px;
+  padding: 25px 50px 50px;
   background: url(~@/assets/images/background/background.jpg);
   overflow: hidden;
 

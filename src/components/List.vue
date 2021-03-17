@@ -103,9 +103,9 @@ export default {
   align-items: center;
   position: relative;
   z-index: 2;
+  margin: 0 -25px;
+  width: calc(100% + 50px);
   $root: &;
-  margin: 0 -50px;
-  width: calc(100% + 100px);
 
   &__wrapper {
     position: relative;
