@@ -22,19 +22,18 @@ export default {
   },
   mounted() {
     this.model.colors.forEach(color => {
-      for (let i = 1; i < 24; i++) {
-        const image = new Image();
-        image.src = `img/colors/${this.model.name.toLowerCase()}/${color.hex.slice(1, 7)}/${i}.png`;
-      }
+      const image = new Image();
+      image.src = `img/colors/${this.model.name.toLowerCase()}/${color.hex.slice(1, 7)}/1.png`;
     });
   },
   computed: {
     brand() {
       return BRAND;
     },
-    imagePath() {
-      return `img/colors/${this.model.name.toLowerCase()}/${this.color.hex.slice(1, 7)}`;
-    },
+    image() {
+      const color = this.color || this.model.colors[0];
+      return `img/colors/${this.model.name.toLowerCase()}/${color.hex.slice(1, 7)}/1.png`;
+    }
   },
   methods: {
     getPath(path) {
@@ -48,25 +47,11 @@ export default {
   <div class="quiz-colors">
     <div class="quiz-colors__stage">
       <div
-        v-if="color"
-        class="quiz-colors__stage-sixty"
-      >
-        <vue-three-sixty
-          :key="color.id"
-          :amount="24"
-          :disableZoom="true"
-          :spinReverse="true"
-          :imagePath="imagePath"
-          fileName="{index}.png"
-        />
-      </div>
-      <div
-        v-else
         class="quiz-colors__stage-image"
       >
         <img
           :alt="`${brand} ${model.name}`"
-          :src="getPath(model.image)"
+          :src="image"
         >
       </div>
     </div>
