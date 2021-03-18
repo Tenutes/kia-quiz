@@ -2,7 +2,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   lintOnSave: false,
   productionSourceMap: false,
-  publicPath: '/portfolio/kia/',
+  publicPath: '/portfolio/kia/var2/',
 
   css: {
     loaderOptions: {

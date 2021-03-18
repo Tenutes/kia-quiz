@@ -19,7 +19,7 @@
     &.error {
       ~ .checkmark__box,
       ~ label .checkmark__box {
-        border-color: $c-red;
+        animation: blinkCheck 1s ease;
       }
     }
   }
@@ -29,7 +29,8 @@
     display: inline-block;
     cursor: pointer;
     font-size: 10px;
-    line-height: 22px;
+    line-height: 20px;
+    vertical-align: middle;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     font-family: Arial, sans-serif;
@@ -82,4 +83,12 @@
       top: 30%;
     }
   }
+}
+
+@keyframes blinkCheck {
+  0%{border-color: white;}
+  25%{border-color: $c-red;}
+  50%{border-color: white;}
+  75%{border-color: $c-red;}
+  100%{border-color: white;}
 }

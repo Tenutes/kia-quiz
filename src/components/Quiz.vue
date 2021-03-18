@@ -8,12 +8,10 @@ import Colors from '@/components/Colors';
 import Feedback from '@/components/Feedback';
 import Success from '@/components/Success';
 import Developer from '@/components/Developer';
-import Firework from '@/components/Firework';
 
 export default {
   name: 'Quiz',
   components: {
-    Firework,
     Developer,
     Success,
     HeadVue,
@@ -103,9 +101,6 @@ export default {
     }"
     class="quiz"
   >
-    <firework
-      v-if="formSent"
-    />
     <parallax-background
       :friction="1/300"
       :speedFactor="3"

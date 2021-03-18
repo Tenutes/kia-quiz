@@ -22,6 +22,7 @@ export default {
       agreement: true,
       error: {},
       showPopup: false,
+      errorHideTimeout: null,
     };
   },
   computed: {
@@ -35,8 +36,9 @@ export default {
   methods: {
     submit() {
       this.error = {};
+      clearTimeout(this.errorHideTimeout);
       if (!this.phone || !isPhoneValid(this.phone)) {
-        this.error.phone = 'Введите корректный номер телефона';
+        this.error.phone = true;
       }
 
       if (!this.agreement) {
@@ -44,6 +46,7 @@ export default {
       }
 
       if (Object.keys(this.error).length) {
+        this.errorHideTimeout = setTimeout(() => this.error = {}, 1000);
         return;
       }
 
@@ -71,19 +74,12 @@ export default {
       >
         <div class="quiz-feedback__form-field">
           <div class="quiz-feedback__form-field-input">
-            <label
-              v-if="error.phone"
-              for="phone"
-              class="error"
-            >
-              {{ error.phone }}
-            </label>
             <input
               v-model="phone"
               v-mask="mask"
               :class="{
-              error: error.phone,
-            }"
+                error: error.phone,
+              }"
               name="phone"
               placeholder="+7 (Ваш телефон)"
               required
@@ -180,26 +176,17 @@ export default {
       margin-bottom: 0;
     }
 
-    label.error {
-      position: absolute;
-      top: 100%;
-      font-size: 12px;
-      left: 0;
-      color: $c-red;
-      font-family: Arial, sans-serif;
-    }
-
     input {
       display: block;
       width: calc(100% - 40px);
       padding: 5px 0;
       font-size: 22px;
       color: white;
-      border-bottom: 1px solid white;
+      border-bottom: 1px solid currentColor;
 
       &::placeholder {
         font-size: inherit;
-        color: white;
+        color: currentColor;
       }
 
       &:focus {
@@ -207,7 +194,7 @@ export default {
       }
 
       &.error {
-        border-bottom-color: $c-red;
+        animation: blink 1s ease;
       }
     }
   }
@@ -225,7 +212,6 @@ export default {
       position: relative;
       padding-left: 15px;
       font-size: 20px;
-      font-weight: 800;
       color: white;
 
       sup {
@@ -270,6 +256,14 @@ export default {
     -webkit-font-smoothing: antialiased;
     font-family: Arial, sans-serif;
   }
+}
+
+@keyframes blink {
+  0%{color: white;}
+  25%{color: $c-red;}
+  50%{color: white;}
+  75%{color: $c-red;}
+  100%{color: white;}
 }
 
 </style>
