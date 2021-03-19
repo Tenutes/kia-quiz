@@ -1,11 +1,13 @@
 <script>
 import { BRAND } from '@/constants';
-import { isPhoneValid, PHONE_MASK } from '@/utils';
+import { getPath, isPhoneValid, PHONE_MASK } from '@/utils';
 import Popup from '@/components/Popup';
 
 export default {
   name: 'Feedback',
-  components: { Popup },
+  components: {
+    Popup,
+  },
   props: {
     model: {
       type: Object,
@@ -52,6 +54,9 @@ export default {
 
       this.$emit('submit', this.phone);
     },
+    getPath(path) {
+      return getPath(`${this.model.name.toLowerCase()}/${path}`);
+    },
   },
 };
 </script>
@@ -64,6 +69,20 @@ export default {
           :alt="`${brand} ${model.name}`"
           :src="`img/colors/${this.model.name.toLowerCase()}/${this.color.hex.slice(1, 7)}/1.png`"
         >
+      </div>
+      <div class="quiz-feedback__interior">
+        <div
+          v-for="(image, index) in model.interiorImages"
+          :key="index"
+          class="quiz-feedback__interior-item"
+        >
+          <div class="quiz-feedback__interior-image">
+            <img
+              :src="getPath(image)"
+              alt="model interior"
+            >
+          </div>
+        </div>
       </div>
     </div>
     <div class="quiz-feedback__item">
@@ -136,19 +155,61 @@ export default {
 .quiz-feedback {
   position: relative;
   display: flex;
+  align-items: flex-end;
   flex-grow: 1;
   padding-top: 25px;
+  margin-left: -30px;
 
   &__item {
-    flex-grow: 1;
+    flex-shrink: 0;
 
     &--image {
-      flex-shrink: 0;
       width: 60%;
+      align-self: stretch;
+      position: relative;
+      flex-grow: 1;
     }
 
     &:last-child {
       margin-right: 0;
+      width: 321px;
+    }
+  }
+
+  &__interior {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 32px;
+    right: 70px;
+  }
+
+  &__interior-item {
+    margin-right: 15px;
+    width: calc(20% - calc(60px / 5));
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__interior-image {
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 5px;
+      border: 1px solid #a7a7a7;
     }
   }
 
@@ -170,7 +231,7 @@ export default {
 
   &__form-field {
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 21px;
 
     &:last-child {
       margin-bottom: 0;
@@ -259,11 +320,21 @@ export default {
 }
 
 @keyframes blink {
-  0%{color: white;}
-  25%{color: $c-red;}
-  50%{color: white;}
-  75%{color: $c-red;}
-  100%{color: white;}
+  0% {
+    color: white;
+  }
+  25% {
+    color: $c-red;
+  }
+  50% {
+    color: white;
+  }
+  75% {
+    color: $c-red;
+  }
+  100% {
+    color: white;
+  }
 }
 
 </style>

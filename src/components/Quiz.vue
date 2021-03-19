@@ -62,6 +62,7 @@ export default {
      */
     abortQuiz() {
       this.quizAborted = true;
+      this.$emit('done');
     },
     chooseModel(model) {
       this.model = model;

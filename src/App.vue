@@ -1,18 +1,42 @@
 <script>
 import Quiz from './components/Quiz';
+import SiteBackground from '@/components/SiteBackground';
 
 export default {
   name: 'App',
   components: {
+    SiteBackground,
     Quiz,
+  },
+  data() {
+    return {
+      setuped: false,
+    };
+  },
+  mounted() {
+    setTimeout(() => this.setuped = true, 2000);
   },
 };
 </script>
 
 <template>
-  <div id="#app" class="layout">
-    <div class="layout__content">
-      <quiz/>
+  <div
+    id="#app"
+    class="layout"
+    :class="{
+      setuped,
+    }"
+  >
+    <site-background/>
+    <div
+      class="layout__content"
+      :class="{
+        setuped,
+      }"
+    >
+      <quiz
+        @done="setuped = false"
+      />
     </div>
   </div>
 </template>
@@ -146,6 +170,21 @@ svg {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(white, .55);
+    opacity: 0;
+    visibility: hidden;
+    transition: .55s ease-out;
+    z-index: 2;
+  }
 
   &__content {
     width: 100%;
@@ -156,6 +195,25 @@ svg {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .55s ease-out, visibility .55s ease-out;
+    position: relative;
+    z-index: 3;
+    border: 1px solid transparent;
+
+    &.setuped {
+      opacity: 1;
+      visibility: visible;
+      border: 1px solid #d5d5d5;
+    }
+  }
+
+  &.setuped {
+    &::before {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 }
 </style>

@@ -88,7 +88,7 @@ export default {
   h2 {
     position: relative;
     z-index: 3;
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 400;
     line-height: 1.22;
     color: #6a6a6a;
