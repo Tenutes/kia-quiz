@@ -99,7 +99,7 @@ export default {
     flex-grow: 1;
     width: 100%;
     margin-bottom: 15px;
-    max-width: 420px;
+    max-width: 550px;
   }
 
   &__stage-image {
